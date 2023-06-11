@@ -17,12 +17,31 @@ const SignUp = () => {
         // Register With Emaill pass function
         createUser(data.email, data.password)
             .then(result => {
-                // successToast('Registration Successfull');
-                console.log(result)
+                // console.log(result)
                 updateUserProfile(result.user, data.name, data.photo)
-                reset()
                 logOut()
-                navigate('/login')
+                    .then(() => {
+                        const saveUser = { name: data.name, email: data.email, photo: data.photo }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    alert("Successfully registered")
+                                    navigate('/login');
+                                }
+                            })
+
+
+
+                    })
+                    .catch(error => console.log(error))
             })
             .catch(error => {
                 if ((error.message).includes('email-already-in-use')) {

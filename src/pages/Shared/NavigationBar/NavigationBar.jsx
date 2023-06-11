@@ -8,7 +8,9 @@ const NavigationBar = () => {
         <NavLink to='/' className='font-bold mx-5 my-2 md:my-0 hover:border'>Home</NavLink>
         <NavLink to='/' className='font-bold mx-5 my-2 md:my-0 hover:border'>Instructors</NavLink>
         <NavLink to='/' className='font-bold mx-5 my-2 md:my-0 hover:border'>Classes</NavLink>
-        <NavLink to='/dashboard' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
+        {
+            user && <NavLink to='/dashboard' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
+        }
     </>
     const handleLogOut = () => {
         logOut();
