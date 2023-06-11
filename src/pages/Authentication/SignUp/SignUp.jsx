@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const SignUp = () => {
     const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
@@ -58,12 +59,14 @@ const SignUp = () => {
     }
     return (
         <div>
+            
             <div className='flex justify-center items-center md:my-50'>
                 <div className='p-5 m-5 md:w-3/12 rounded-2xl space-y-2' style={{ border: '2px solid #e2136e' }}>
                     <h2 className='text-2xl font-bold text-center text-gray-700'>Register here</h2>
                     {
                         (errormsg.length > 2) && <p className='text-center border border-[#e2136e] text-[#e2136e] text-sm my-1 font-semibold rounded-md'>{errormsg}</p>
                     }
+                    <SocialLogin></SocialLogin>
                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-3'>
                         <div className="form-control">
                             <label className="label">
