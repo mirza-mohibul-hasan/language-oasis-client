@@ -4,20 +4,37 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
 
 const SignUp = () => {
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const [confirmPassword, setConfirmPassword] = useState('')
-
+    const [errormsg, setErrormsg] = useState('');
     const onSubmit = data => {
-        if(data.password != confirmPassword){
-           return alert("Password not matched")
+        if (data.password != confirmPassword) {
+            return alert("Password not matched")
         }
+        // Register With Emaill pass function
+        createUser(data.email, data.password)
+            .then(result => {
+                // successToast('Registration Successfull');
+                console.log(result)
+                updateUserProfile(result.user, data.name, data.photo)
+                logOut()
+                navigate('/login')
+            })
+            .catch(error => {
+                if ((error.message).includes('email-already-in-use')) {
+                    setErrormsg("Already Registered")
+                }
+                else {
+                    setErrormsg(error.message)
+                }
+            })
 
 
         navigate('/')
     };
-    const handleConfim = (e)=>{
+    const handleConfim = (e) => {
         const confirmPassword = e.target.value;
         setConfirmPassword(confirmPassword)
     }
@@ -26,6 +43,9 @@ const SignUp = () => {
             <div className='flex justify-center items-center md:my-50'>
                 <div className='p-5 m-5 md:w-3/12 rounded-2xl space-y-2' style={{ border: '2px solid #e2136e' }}>
                     <h2 className='text-2xl font-bold text-center text-gray-700'>Register here</h2>
+                    {
+                        (errormsg.length > 2) && <p className='text-center border border-[#e2136e] text-[#e2136e] text-sm my-1 font-semibold rounded-md'>{errormsg}</p>
+                    }
                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-3'>
                         <div className="form-control">
                             <label className="label">
