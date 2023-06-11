@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home/Home";
+import Dashboard from "../layout/DashBoard";
 
 const router = createBrowserRouter([
     {
@@ -15,6 +16,17 @@ const router = createBrowserRouter([
                 loader:()=> fetch('classes.json')
             }
         ]
+    },
+    {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
+        // children: [
+        //     {
+        //         path: '/',
+        //         element:<Home></Home>,
+        //         loader:()=> fetch('classes.json')
+        //     }
+        // ]
     },
 ]);
 export default router;

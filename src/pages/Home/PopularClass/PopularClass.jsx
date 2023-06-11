@@ -11,7 +11,7 @@ const PopularClass = () => {
         .then(data => setClasses(data))
     },[])
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:px-10 gap-5">
             {
                 classes.map(singleClass => <PopularClassCard key={singleClass._id} singleClass={singleClass}></PopularClassCard>)
             }

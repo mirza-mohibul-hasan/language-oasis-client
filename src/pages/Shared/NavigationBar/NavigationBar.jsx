@@ -25,8 +25,9 @@ const NavigationBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <NavLink to='/' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
-                <p>User Profile</p>
+                <NavLink to='/dashboard' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
+                <p>User Profile </p>
+                <NavLink>Login</NavLink>
             </div>
         </div>
     );
