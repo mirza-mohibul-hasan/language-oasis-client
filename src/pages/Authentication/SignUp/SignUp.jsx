@@ -13,12 +13,14 @@ const SignUp = () => {
         if (data.password != confirmPassword) {
             return alert("Password not matched")
         }
+        // console.log(data)
         // Register With Emaill pass function
         createUser(data.email, data.password)
             .then(result => {
                 // successToast('Registration Successfull');
                 console.log(result)
                 updateUserProfile(result.user, data.name, data.photo)
+                reset()
                 logOut()
                 navigate('/login')
             })
@@ -30,9 +32,6 @@ const SignUp = () => {
                     setErrormsg(error.message)
                 }
             })
-
-
-        navigate('/')
     };
     const handleConfim = (e) => {
         const confirmPassword = e.target.value;
@@ -80,7 +79,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text"  {...register("photoURL")} placeholder="Photo URL" className="input input-bordered" />
+                            <input type="text"  {...register("photo")} placeholder="Photo URL" className="input input-bordered" />
                         </div>
                         <div className="form-control mt-6">
                             <input className="bg-[#e2136e] text-white font-semibold rounded py-1" type="submit" value="Sign Up" />

@@ -1,14 +1,18 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { GoThreeBars } from "react-icons/go";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 const NavigationBar = () => {
-    const { user } = useContext(AuthContext)
+    const { logOut, user } = useContext(AuthContext)
     const navItems = <>
         <NavLink to='/' className='font-bold mx-5 my-2 md:my-0 hover:border'>Home</NavLink>
         <NavLink to='/' className='font-bold mx-5 my-2 md:my-0 hover:border'>Instructors</NavLink>
         <NavLink to='/' className='font-bold mx-5 my-2 md:my-0 hover:border'>Classes</NavLink>
+        <NavLink to='/dashboard' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
     </>
+    const handleLogOut = () => {
+        logOut();
+    }
     return (
         <div className="navbar bg-[#e2136e] text-[#f3f3f3] lg:px-10">
             <div className="navbar-start">
@@ -29,11 +33,12 @@ const NavigationBar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user? <>
-                        <NavLink to='/dashboard' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
-                        <p>User Profile </p>
-                    </>:
-                    <NavLink to='/login'>Login</NavLink>
+                    user&& <img src={user?.photoURL} className='w-8 rounded-3xl' alt="" />
+                }
+                {
+
+                    user ? <button onClick={handleLogOut} className='py-1 px-2 mx-1 rounded hover:bg-[#af2963] font-semibold md:my-0 text-white'>Log out</button> :
+                        <Link to='/login'><button className='py-1 px-2 mx-1 rounded hover:bg-[#af2963] font-semibold md:my-0 text-white'>Log in</button></Link>
                 }
             </div>
         </div>
