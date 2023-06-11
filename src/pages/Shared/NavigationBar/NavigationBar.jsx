@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { GoThreeBars } from "react-icons/go";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
 const NavigationBar = () => {
+    const { user } = useContext(AuthContext)
     const navItems = <>
         <NavLink to='/' className='font-bold mx-5 my-2 md:my-0 hover:border'>Home</NavLink>
         <NavLink to='/' className='font-bold mx-5 my-2 md:my-0 hover:border'>Instructors</NavLink>
@@ -25,9 +28,13 @@ const NavigationBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <NavLink to='/dashboard' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
-                <p>User Profile </p>
-                <NavLink>Login</NavLink>
+                {
+                    user? <>
+                        <NavLink to='/dashboard' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
+                        <p>User Profile </p>
+                    </>:
+                    <NavLink>Login</NavLink>
+                }
             </div>
         </div>
     );
