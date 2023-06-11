@@ -1,0 +1,52 @@
+[
+    {
+        "_id": "1",
+        "className": "German Language",
+        "classImage": "https://dammann-german-english-translations.com.au/wp-content/uploads/2018/06/Distribution-of-the-German-Language-e1525693687656-600x418-1.jpg",
+        "instructorName": "Morshed Ali",
+        "instructorEmail": "Morshed Ali",
+        "seats":"30",
+        "students":"10",
+        "price": 14.7
+    },
+    {
+        "_id": "2",
+        "className": "Hindi Language",
+        "classImage": "https://dammann-german-english-translations.com.au/wp-content/uploads/2018/06/Distribution-of-the-German-Language-e1525693687656-600x418-1.jpg",
+        "instructorName": "Morshed Ali",
+        "instructorEmail": "Morshed Ali",
+        "seats":"30",
+        "students":"10",
+        "price": 14.7
+    },
+    {
+        "_id": "3",
+        "className": "Arabic Language",
+        "classImage": "https://dammann-german-english-translations.com.au/wp-content/uploads/2018/06/Distribution-of-the-German-Language-e1525693687656-600x418-1.jpg",
+        "instructorName": "Morshed Ali",
+        "instructorEmail": "Morshed Ali",
+        "seats":"30",
+        "students":"10",
+        "price": 14.7
+    },
+    {
+        "_id": "4",
+        "className": "Spanish Language",
+        "classImage": "https://dammann-german-english-translations.com.au/wp-content/uploads/2018/06/Distribution-of-the-German-Language-e1525693687656-600x418-1.jpg",
+        "instructorName": "Morshed Ali",
+        "instructorEmail": "Morshed Ali",
+        "seats":"30",
+        "students":"10",
+        "price": 14.7
+    },
+    {
+        "_id": "5",
+        "className": "English Language",
+        "classImage": "https://dammann-german-english-translations.com.au/wp-content/uploads/2018/06/Distribution-of-the-German-Language-e1525693687656-600x418-1.jpg",
+        "instructorName": "Morshed Ali",
+        "instructorEmail": "Morshed Ali",
+        "seats":"30",
+        "students":"10",
+        "price": 14.7
+    }
+]
