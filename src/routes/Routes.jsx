@@ -5,6 +5,9 @@ import Home from "../pages/Home/Home/Home";
 import Dashboard from "../layout/DashBoard";
 import SignUp from "../pages/Authentication/SignUp/SignUp";
 import Login from "../pages/Authentication/Login/Login";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome";
+import AllClasses from "../pages/Dashboard/Admin/AllClasses";
 
 const router = createBrowserRouter([
     {
@@ -14,28 +17,35 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element:<Home></Home>,
+                element: <Home></Home>,
             },
             {
                 path: '/signup',
-                element:<SignUp></SignUp>,
+                element: <SignUp></SignUp>,
             },
             {
                 path: '/login',
-                element:<Login></Login>
+                element: <Login></Login>
             }
         ]
     },
     {
-        path: "/dashboard",
+        path: "dashboard",
         element: <Dashboard></Dashboard>,
-        // children: [
-        //     {
-        //         path: '/',
-        //         element:<Home></Home>,
-        //         loader:()=> fetch('classes.json')
-        //     }
-        // ]
+        children: [
+            {
+                path: 'adminhome',
+                element: <AdminHome></AdminHome>
+            },
+            {
+                path: 'manageusers',
+                element: <ManageUsers></ManageUsers>
+            },
+            {
+                path: 'allclasses',
+                element: <AllClasses></AllClasses>
+            },
+        ]
     },
 ]);
 export default router;
