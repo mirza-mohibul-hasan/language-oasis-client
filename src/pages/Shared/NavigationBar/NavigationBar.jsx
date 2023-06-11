@@ -33,7 +33,7 @@ const NavigationBar = () => {
                         <NavLink to='/dashboard' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
                         <p>User Profile </p>
                     </>:
-                    <NavLink>Login</NavLink>
+                    <NavLink to='/login'>Login</NavLink>
                 }
             </div>
         </div>

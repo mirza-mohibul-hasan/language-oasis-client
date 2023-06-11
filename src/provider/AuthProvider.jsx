@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
-    const updateUserData = (user, name, photo) => {
+    const updateUserProfile = (user, name, photo) => {
         setLoading(true);
         updateProfile(user, {
             displayName: name,
@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
     //Google signin
-    const handleGoogleSignIn = () => {
+    const googleSignIn = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
@@ -57,8 +57,8 @@ const AuthProvider = ({ children }) => {
         createUser,
         signIn,
         logOut,
-        handleGoogleSignIn,
-        updateUserData,
+        googleSignIn,
+        updateUserProfile,
     };
     return (
         <AuthContext.Provider value={authInfo}>
