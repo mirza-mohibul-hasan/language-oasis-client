@@ -1,9 +1,13 @@
 // import React from 'react';
 
+import { Outlet } from "react-router-dom";
+import NavigationBar from "../pages/Shared/NavigationBar/NavigationBar";
+
 const Main = () => {
     return (
-        <div>
-            <h1>This is a layout</h1>
+        <div className="">
+            <NavigationBar></NavigationBar>
+            <Outlet></Outlet>
         </div>
     );
 };
