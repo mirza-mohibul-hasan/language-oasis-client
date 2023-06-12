@@ -13,9 +13,9 @@ import StudentHome from "../pages/Dashboard/Student/StudentHome";
 import SelectedClass from "../pages/Dashboard/Student/SelectedClass";
 import EnrolledClass from "../pages/Dashboard/Student/EnrolledClass";
 import Instructors from "../pages/Instructors/Instructors";
-import InstructorHome from "../pages/Dashboard/Instructors/InstructorHome";
-import MyClasses from "../pages/Dashboard/Instructors/MyClasses";
-import AddAClass from "../pages/Dashboard/Instructors/AddAClass";
+import InstructorHome from "../pages/Dashboard/Instructor/InstructorHome";
+import MyClasses from "../pages/Dashboard/Instructor/MyClasses";
+import AddAClass from "../pages/Dashboard/Instructor/AddAClass";
 
 const router = createBrowserRouter([
     {
