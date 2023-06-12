@@ -8,6 +8,7 @@ import Login from "../pages/Authentication/Login/Login";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome";
 import AllClasses from "../pages/Dashboard/Admin/AllClasses";
+import Classes from "../pages/Classes/Classes";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
+            },
+            {
+                path: '/classes',
+                element: <Classes></Classes>
             },
             {
                 path: '/signup',
