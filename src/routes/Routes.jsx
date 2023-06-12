@@ -90,7 +90,7 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <Payment></Payment>,
-                loader: ({params})=>fetch(`http://localhost:5000/payment/${params.id}`)
+                loader: ({params})=>fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/payment/${params.id}`)
             }
         ]
     },

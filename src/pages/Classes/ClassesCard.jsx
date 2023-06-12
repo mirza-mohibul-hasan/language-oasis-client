@@ -13,7 +13,7 @@ const ClassesCard = ({ singleClass }) => {
         console.log(item);
         if (user && user.email) {
             const addedclass = { classId: _id, classImage, className, instructorEmail, instructorName, price, seats, students, email: user.email, paymentStatus:'booked'}
-            fetch('http://localhost:5000/userclasses', {
+            fetch('https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/userclasses', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

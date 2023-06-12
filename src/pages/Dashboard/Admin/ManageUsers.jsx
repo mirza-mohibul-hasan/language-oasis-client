@@ -10,7 +10,7 @@ const ManageUsers = () => {
         return res.data;
     })
     const handleUserRole = (user, role) => {
-        fetch(`http://localhost:5000/users/admin/roleupdate/${user._id}?role=${role}`, {
+        fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/users/admin/roleupdate/${user._id}?role=${role}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -38,6 +38,7 @@ const ManageUsers = () => {
                             </th>
                             <th>Profile</th>
                             <th>Name</th>
+                            <th>Email</th>
                             <th>Role</th>
                             <th>Action</th>
                         </tr>
@@ -55,10 +56,13 @@ const ManageUsers = () => {
                                     <td>
                                         {user.name}
                                     </td>
+                                    <td>
+                                        {user.email}
+                                    </td>
                                     <td className="uppercase">{user.role ? user.role : 'Student'}</td>
                                     <td className="space-x-2">
-                                        <button onClick={() => handleUserRole(user, 'admin')} className="btn bg-[#e2136e] btn-ghost btn-xs">Make Admin</button>
-                                        <button onClick={() => handleUserRole(user, 'instructor')} className="btn bg-[#e2136e] btn-ghost btn-xs">Make Instructor</button>
+                                        <button disabled={user.role === 'admin'} onClick={() => handleUserRole(user, 'admin')} className="btn bg-[#e2136e] btn-ghost btn-xs">Make Admin</button>
+                                        <button disabled={user.role === 'instructor'}  onClick={() => handleUserRole(user, 'instructor')} className="btn bg-[#e2136e] btn-ghost btn-xs">Make Instructor</button>
                                     </td>
                                 </tr>
                             )
