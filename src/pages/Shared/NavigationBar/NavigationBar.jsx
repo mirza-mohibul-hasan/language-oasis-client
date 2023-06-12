@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GoThreeBars } from "react-icons/go";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
@@ -6,7 +6,7 @@ import useAdmin from "../../../hooks/useAdmin";
 import useInstructor from "../../../hooks/useInstructor";
 const NavigationBar = () => {
     const { logOut, user } = useContext(AuthContext)
-
+    const navigate = useNavigate();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
     const isStudent = (isAdmin ==true || isInstructor == true)?false: true;
@@ -27,6 +27,7 @@ const NavigationBar = () => {
     </>
     const handleLogOut = () => {
         logOut();
+        navigate('/')
     }
     return (
         <div className="navbar bg-[#e2136e] text-[#f3f3f3] lg:px-10">

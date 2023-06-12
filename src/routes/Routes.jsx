@@ -17,6 +17,7 @@ import InstructorHome from "../pages/Dashboard/Instructor/InstructorHome";
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses";
 import AddAClass from "../pages/Dashboard/Instructor/AddAClass";
 import PrivateRoute from "./PrivateRoute";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -86,6 +87,11 @@ const router = createBrowserRouter([
                 path: 'addaclass',
                 element: <AddAClass></AddAClass>
             },
+            {
+                path: 'payment/:id',
+                element: <Payment></Payment>,
+                loader: ({params})=>fetch(`http://localhost:5000/payment/${params.id}`)
+            }
         ]
     },
 ]);

@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const SelectedClass = () => {
     const { user, loading } = useAuth();
@@ -100,7 +101,7 @@ const SelectedClass = () => {
                                         }
                                     </td>
                                     <td>
-                                        <button className="btn bg-green-500 btn-ghost btn-xs">Pay</button>
+                                        <Link to={`/dashboard/payment/${singleClass._id}`}><button className="btn bg-green-500 btn-ghost btn-xs">Pay</button></Link>
                                         <button onClick={() => handleDelete(singleClass)} className="btn bg-red-500 btn-ghost btn-xs">Delete</button>
                                     </td>
                                 </tr>)
