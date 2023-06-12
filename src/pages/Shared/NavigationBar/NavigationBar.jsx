@@ -9,7 +9,7 @@ const NavigationBar = () => {
 
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    const isStudent = (isAdmin || isInstructor) ? false : true;
+    const isStudent = (isAdmin ==true || isInstructor == true)?false: true;
 
     const navItems = <>
         <NavLink to='/' className='font-bold mx-5 my-2 md:my-0 hover:border'>Home</NavLink>

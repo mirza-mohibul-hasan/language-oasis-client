@@ -6,7 +6,7 @@ const MyClasses = () => {
     const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const {  data: myclasses = [] } = useQuery({
-        queryKey: ['bookedclass', user?.email],
+        queryKey: ['myclasses', user?.email],
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure(`/myclasses?email=${user?.email}`)
@@ -21,12 +21,15 @@ const MyClasses = () => {
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Banner</th>
                             <th>Title</th>
                             <th>Instructor</th>
                             <th>Contact</th>
                             <th>Price</th>
+                            <th>Enrolled</th>
                             <th>Available Seats</th>
-                            <th>Action</th>
+                            <th>Status</th>
+                            <th>Admin Feedback</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +42,9 @@ const MyClasses = () => {
                                             index + 1
                                         }
                                     </th>
+                                    <td>
+                                        <img className="w-8" src={singleClass.classImage} alt="" />
+                                    </td>
                                     <td>
                                         {
                                             singleClass.className
@@ -61,12 +67,23 @@ const MyClasses = () => {
                                     </td>
                                     <td>
                                         {
-                                            singleClass.seats
+                                            singleClass.students
                                         }
                                     </td>
                                     <td>
-                                        <button className="btn bg-green-500 btn-ghost btn-xs">Pay</button>
-                                        <button onClick={() => handleDelete(singleClass)} className="btn bg-red-500 btn-ghost btn-xs">Delete</button>
+                                        {
+                                            singleClass.seats
+                                        }
+                                    </td>
+                                    <td className="uppercase">
+                                        {
+                                            singleClass.status
+                                        }
+                                    </td>
+                                    <td>
+                                        {
+                                            (singleClass.status=='denied') && singleClass.feedback
+                                        }
                                     </td>
                                 </tr>)
                         }

@@ -22,7 +22,6 @@ const AddAClass = () => {
 
         axiosSecure.post('/classes', newclass)
             .then(data => {
-                console.log('after posting new menu item', data.data)
                 if (data.data.insertedId) {
                     Swal.fire({
                         position: 'top-end',

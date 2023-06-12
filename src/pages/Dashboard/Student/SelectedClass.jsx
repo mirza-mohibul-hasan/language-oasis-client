@@ -28,7 +28,11 @@ const SelectedClass = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`http://localhost:5000/bookedclass/${item._id}`, {
-                    method: 'DELETE'
+                    method: 'DELETE',
+                    headers: {
+                        'content-type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('access-token')}`
+                    }
                 })
                     .then(res => res.json())
                     .then(data => {

@@ -11,13 +11,17 @@ const AllClasses = () => {
         queryKey: ['bookedclass', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axiosSecure('/users/admin')
+            const res = await axiosSecure('/users/admin/allclass')
             return res.data;
         },
     })
     const handleStatus = (item, status) => {
         fetch(`http://localhost:5000/users/admin/classupdate/${item._id}?status=${status}`, {
-            method: 'PATCH'
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                authorization : `Bearer ${localStorage.getItem('access-token')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -34,7 +38,7 @@ const AllClasses = () => {
         setFeedbackItemId(id)
     }
     const handleFeedback = (feedback) => {
-        console.log(feedback)
+        // console.log(feedback)
         fetch(`http://localhost:5000/users/admin/feedbackupdate/${feedbackItemId}?feedback=${feedback}`, {
             method: 'PATCH'
         })

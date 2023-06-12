@@ -12,7 +12,7 @@ import useInstructor from "../hooks/useInstructor";
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    const isStudent = (isAdmin || isInstructor) ? false : true;
+    const isStudent = (isAdmin ==true || isInstructor == true)?false: true;
     return (
         <div className="bg-white">
             <NavigationBar></NavigationBar>

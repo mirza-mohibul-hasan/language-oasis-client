@@ -10,8 +10,12 @@ const ManageUsers = () => {
         return res.data;
     })
     const handleUserRole = (user, role) => {
-        fetch(`http://localhost:5000/users/admin/${user._id}?role=${role}`, {
-            method: 'PATCH'
+        fetch(`http://localhost:5000/users/admin/roleupdate/${user._id}?role=${role}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                authorization : `Bearer ${localStorage.getItem('access-token')}`
+            }
         })
             .then(res => res.json())
             .then(data => {

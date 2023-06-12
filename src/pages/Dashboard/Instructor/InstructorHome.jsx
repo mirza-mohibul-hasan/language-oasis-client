@@ -1,9 +1,12 @@
 // import React from 'react';
 
+import useAuth from "../../../hooks/useAuth";
+
 const InstructorHome = () => {
+    const {user}=useAuth();
     return (
         <div>
-            Ins Home
+            <h1 className="text-center text-5xl">Welcome <span className="text-[#e2136e]">{user?.displayName}</span>!!</h1>
         </div>
     );
 };
