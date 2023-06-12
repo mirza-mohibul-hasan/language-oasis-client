@@ -13,7 +13,7 @@ const Slider = () => {
         progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     };
     return (
-        <div className="lg:px-10">
+        <div className="lg:px-10 my-5">
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -30,22 +30,41 @@ const Slider = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <img className="w-full h-72" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnLvXxKnObJKRhf0ToVqlmKQGfgrJ6E3ar3g&usqp=CAU" alt="" />
+                    <div className="hero min-h-screen rounded" style={{ backgroundImage: "url(https://kochiva.com/wp-content/uploads/2022/09/german_course_online.webp)" }}>
+                        <div className="hero-overlay bg-opacity-60"></div>
+                        <div className="hero-content text-center text-neutral-content">
+                            <div className="max-w-lg">
+                                <h1 className="mb-5 text-5xl font-bold">Do you want to learn foreign language?</h1>
+                                <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                                <button className="btn btn-primary bg-[#e2136e] border-none">Here we are</button>
+                            </div>
+                        </div>
+                    </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className="w-96" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnLvXxKnObJKRhf0ToVqlmKQGfgrJ6E3ar3g&usqp=CAU" alt="" />
+                    <div className="hero w-full min-h-screen rounded" style={{ backgroundImage: "url(https://edge.mondly.com/blog/wp-content/uploads/2020/03/learn-bengali-1.jpg)", backgroundSize: "cover"  }}>
+                        <div className="hero-overlay bg-opacity-60"></div>
+                        <div className="hero-content text-center text-neutral-content">
+                            <div className="max-w-md">
+                                <h1 className="mb-5 text-5xl font-bold">For more diversity</h1>
+                                <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                                <button className="btn btn-primary bg-[#e2136e] border-none">Here we are</button>
+                            </div>
+                        </div>
+                    </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className="w-96" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnLvXxKnObJKRhf0ToVqlmKQGfgrJ6E3ar3g&usqp=CAU" alt="" />
+                    <div className="hero w-full min-h-screen" style={{ backgroundImage: "url(https://www.quranhost.com/wp-content/uploads/2023/04/learn-arabic.png)" }}>
+                        <div className="hero-overlay bg-opacity-60"></div>
+                        <div className="hero-content text-center text-neutral-content">
+                            <div className="max-w-md">
+                                <h1 className="mb-5 text-5xl font-bold">Are you looking for Arabic language?</h1>
+                                <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                                <button className="btn btn-primary bg-[#e2136e] border-none">Here we are</button>
+                            </div>
+                        </div>
+                    </div>
                 </SwiperSlide>
-                {/* <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
-                <SwiperSlide>Slide 7</SwiperSlide>
-                <SwiperSlide>Slide 8</SwiperSlide>
-                <SwiperSlide>Slide 9</SwiperSlide> */}
                 <div className="autoplay-progress" slot="container-end">
                     <svg viewBox="0 0 48 48" ref={progressCircle}>
                         <circle cx="24" cy="24" r="20"></circle>
