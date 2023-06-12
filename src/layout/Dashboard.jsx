@@ -12,16 +12,22 @@ import useInstructor from "../hooks/useInstructor";
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    const isStudent = false;
+    const isStudent = (isAdmin || isInstructor) ? false : true;
     return (
         <div className="bg-white">
             <NavigationBar></NavigationBar>
             <div className="flex lg:px-10 py-10">
                 {
                     isStudent && <div className="w-1/5 space-y-2">
-                        <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><FaHome></FaHome>Home</button>
-                        <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><SiGoogleclassroom></SiGoogleclassroom> My Selected Class</button>
-                        <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><FaRegCalendarCheck></FaRegCalendarCheck> My Enrolled Class</button>
+                        <Link to='/dashboard/studenthome'>
+                            <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><FaHome></FaHome>Home</button>
+                        </Link>
+                        <Link to='/dashboard/selectedclass'>
+                            <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><SiGoogleclassroom></SiGoogleclassroom> My Selected Class</button>
+                        </Link>
+                        <Link to='/dashboard/enrolledclass'>
+                            <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><FaRegCalendarCheck></FaRegCalendarCheck> My Enrolled Class</button>
+                        </Link>
                     </div>
                 }
                 {
