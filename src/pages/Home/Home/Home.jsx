@@ -1,6 +1,6 @@
 // import React from 'react';
 
-import FAQ from "../FAQ/FAQ";
+import FAQSection from "../FAQ/FAQSection";
 import PopularClass from "../PopularClass/PopularClass";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 import Slider from "../Slider/Slider";
@@ -19,7 +19,7 @@ const Home = () => {
             <Slider></Slider>
             <PopularClass></PopularClass>
             <PopularInstructors></PopularInstructors>
-            <FAQ></FAQ>
+            <FAQSection></FAQSection>
         </div>
     );
 };
