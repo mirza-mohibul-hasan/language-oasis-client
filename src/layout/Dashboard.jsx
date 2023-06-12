@@ -33,9 +33,15 @@ const Dashboard = () => {
                 {
                     isInstructor &&
                     <div className="w-1/5 space-y-2">
-                        <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><FaHome></FaHome>Home</button>
-                        <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><SiGoogleclassroom></SiGoogleclassroom>My Class</button>
-                        <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><MdAssignmentAdd></MdAssignmentAdd> Add A Class</button>
+                        <Link to='/dashboard/instructorhome'>
+                            <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><FaHome></FaHome>Home</button>
+                        </Link>
+                        <Link to='/dashboard/myclasses'>
+                            <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><SiGoogleclassroom></SiGoogleclassroom>My Classes</button>
+                        </Link >
+                        <Link to='/dashboard/addaclass'>
+                            <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><MdAssignmentAdd></MdAssignmentAdd> Add A Class</button>
+                        </Link>
                     </div>
                 }
                 {

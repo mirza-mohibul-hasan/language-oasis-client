@@ -2,14 +2,27 @@ import { Link, NavLink } from "react-router-dom";
 import { GoThreeBars } from "react-icons/go";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 const NavigationBar = () => {
     const { logOut, user } = useContext(AuthContext)
+
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    const isStudent = (isAdmin || isInstructor) ? false : true;
+
     const navItems = <>
         <NavLink to='/' className='font-bold mx-5 my-2 md:my-0 hover:border'>Home</NavLink>
         <NavLink to='/instructors' className='font-bold mx-5 my-2 md:my-0 hover:border'>Instructors</NavLink>
         <NavLink to='/classes' className='font-bold mx-5 my-2 md:my-0 hover:border'>Classes</NavLink>
         {
-            user && <NavLink to='/dashboard' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
+            (user && isAdmin) && <NavLink to='/dashboard/adminhome' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
+        }
+        {
+            (user && isInstructor) && <NavLink to='/dashboard/instructorhome' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
+        }
+        {
+            (user && isStudent) && <NavLink to='/dashboard/studenthome' className='font-bold mx-5 my-2 md:my-0 hover:border'>Dashboard</NavLink>
         }
     </>
     const handleLogOut = () => {
@@ -35,7 +48,7 @@ const NavigationBar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user&& <img src={user?.photoURL} className='w-8 rounded-3xl' alt="" />
+                    user && <img src={user?.photoURL} className='w-8 rounded-3xl' alt="" />
                 }
                 {
 
