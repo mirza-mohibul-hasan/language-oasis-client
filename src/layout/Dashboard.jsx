@@ -6,11 +6,13 @@ import Footer from "../pages/Shared/Footer.jsx/Footer";
 import { FaHome, FaRegAddressBook, FaRegCalendarCheck, FaUsers } from "react-icons/fa";
 import { SiGoogleclassroom } from "react-icons/si";
 import { MdAssignmentAdd } from "react-icons/md";
+import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
     const isStudent = false;
-    const isAdmin = true;
-    const isInstructor = false;
     return (
         <div className="bg-white">
             <NavigationBar></NavigationBar>
