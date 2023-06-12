@@ -1,6 +1,27 @@
 // import React from 'react';
 
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
 const ManageUsers = () => {
+    const [axiosSecure] = useAxiosSecure();
+    const { data: users = [], refetch } = useQuery(['users'], async () => {
+        const res = await axiosSecure.get('/users')
+        return res.data;
+    })
+    const handleUserRole = (user, role) => {
+        fetch(`http://localhost:5000/users/admin/${user._id}?role=${role}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    alert(role+"added")
+                }
+            })
+    }
     return (
         <div className="px-5 border-l-2 ml-5">
             <div className="overflow-x-auto">
@@ -18,23 +39,26 @@ const ManageUsers = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
-                        <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                Pricture
-                            </td>
-                            <td>
-                               Modon Kola
-                            </td>
-                            <td>Student</td>
-                            <td className="space-x-2">
-                                <button className="btn bg-[#e2136e] btn-ghost btn-xs">Make Admin</button>
-                                <button className="btn bg-[#e2136e] btn-ghost btn-xs">Make Instructor</button>
-                            </td>
-                        </tr>
+                        {
+                            users.map((user, index) =>
+                                <tr key={user._id}>
+                                    <td>
+                                        {index+1}
+                                    </td>
+                                    <td>
+                                        <img className="w-8" src={user.photo} alt="" />
+                                    </td>
+                                    <td>
+                                        {user.name}
+                                    </td>
+                                    <td className="uppercase">{user.role ? user.role : 'Student'}</td>
+                                    <td className="space-x-2">
+                                        <button onClick={() => handleUserRole(user, 'admin')} className="btn bg-[#e2136e] btn-ghost btn-xs">Make Admin</button>
+                                        <button onClick={() => handleUserRole(user, 'instructor')} className="btn bg-[#e2136e] btn-ghost btn-xs">Make Instructor</button>
+                                    </td>
+                                </tr>
+                            )
+                        }
                     </tbody>
                 </table>
             </div>
