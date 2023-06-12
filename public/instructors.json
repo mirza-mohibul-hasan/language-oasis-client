@@ -1,38 +1,33 @@
 [
     {
-        "_id": "1",
-        "instructorImage": "https://media.licdn.com/dms/image/C5103AQFWjSLhd4C0tA/profile-displayphoto-shrink_800_800/0/1572331814012?e=2147483647&v=beta&t=oewAby70r3K9xl98TEYdPY5Wmn07mWHKjS2uzzSFX5w",
-        "instructorName": "Morshed Ali",
-        "instructorEmail": "morshed@24.com"
+        "name": "Morshed Ali",
+        "email": "morshed@23.com",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Kareem_Abdul-Jabbar_May_2014.jpg",
+        "role":"instructor"
     },
     {
-        "_id": "2",
-        "instructorImage": "https://media.licdn.com/dms/image/C5103AQFWjSLhd4C0tA/profile-displayphoto-shrink_800_800/0/1572331814012?e=2147483647&v=beta&t=oewAby70r3K9xl98TEYdPY5Wmn07mWHKjS2uzzSFX5w",
-        "instructorName": "Morshed Ali",
-        "instructorEmail": "morshed@24.com"
+        "name": "Rustom Khan",
+        "email": "rustom@abc.com",
+        "photo": "https://qph.cf2.quoracdn.net/main-qimg-64bb41eec20c2443eee77e795043c58e.webp",
+        "role":"instructor"
     },
     {
-        "_id": "3",
-        "instructorImage": "https://media.licdn.com/dms/image/C5103AQFWjSLhd4C0tA/profile-displayphoto-shrink_800_800/0/1572331814012?e=2147483647&v=beta&t=oewAby70r3K9xl98TEYdPY5Wmn07mWHKjS2uzzSFX5w",
-        "instructorName": "Morshed Ali",
-        "instructorEmail": "morshed@24.com"
+        "name": "Mike Kazi",
+        "email": "amthemike@nanta.com",
+        "photo": "https://observerbd.com/2022/03/20/observerbd.com_1647712477.jpg",
+        "role":"instructor"
     },
     {
-        "_id": "4",
-        "instructorImage": "https://media.licdn.com/dms/image/C5103AQFWjSLhd4C0tA/profile-displayphoto-shrink_800_800/0/1572331814012?e=2147483647&v=beta&t=oewAby70r3K9xl98TEYdPY5Wmn07mWHKjS2uzzSFX5w",
-        "instructorName": "Morshed Ali",
-        "instructorEmail": "morshed@24.com"
+        "name": "John Finadey",
+        "email": "johnfin@mymail.com",
+        "photo": "https://cdn.careeronestop.org/OccVids/OccupationVideos/25-1011.00.jpg",
+        "role":"instructor"
     },
     {
-        "_id": "5",
-        "instructorImage": "https://media.licdn.com/dms/image/C5103AQFWjSLhd4C0tA/profile-displayphoto-shrink_800_800/0/1572331814012?e=2147483647&v=beta&t=oewAby70r3K9xl98TEYdPY5Wmn07mWHKjS2uzzSFX5w",
-        "instructorName": "Morshed Ali",
-        "instructorEmail": "morshed@24.com"
-    },
-    {
-        "_id": "6",
-        "instructorImage": "https://media.licdn.com/dms/image/C5103AQFWjSLhd4C0tA/profile-displayphoto-shrink_800_800/0/1572331814012?e=2147483647&v=beta&t=oewAby70r3K9xl98TEYdPY5Wmn07mWHKjS2uzzSFX5w",
-        "instructorName": "Morshed Ali",
-        "instructorEmail": "morshed@24.com"
+        "name": "Stuart Binny",
+        "email": "thisisbinny@mymail.com",
+        "photo": "https://www.ocpathink.org/uploads/assets/img/Teacher-in-front-of-chalkboard.jpeg",
+        "role":"instructor"
     }
+    
 ]

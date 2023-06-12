@@ -1,6 +1,6 @@
 // import React from 'react';
 
-const PopularInstructorsCard = ({instructor}) => {
+const InstructorsCard = ({instructor}) => {
     const {photo, name, email} = instructor;
     return (
         <div className="card w-96 bg-base-100 shadow-xl border border-[#e2136e]">
@@ -15,4 +15,4 @@ const PopularInstructorsCard = ({instructor}) => {
     );
 };
 
-export default PopularInstructorsCard;
+export default InstructorsCard;
