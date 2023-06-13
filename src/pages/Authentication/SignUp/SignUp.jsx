@@ -23,7 +23,7 @@ const SignUp = () => {
                 logOut()
                     .then(() => {
                         const saveUser = { name: data.name, email: data.email, photo: data.photo }
-                        fetch('https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/users', {
+                        fetch('http://localhost:5000/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

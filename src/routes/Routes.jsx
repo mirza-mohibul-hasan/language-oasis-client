@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home/Home";
-import Dashboard from "../layout/DashBoard";
 import SignUp from "../pages/Authentication/SignUp/SignUp";
 import Login from "../pages/Authentication/Login/Login";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
@@ -18,6 +17,8 @@ import MyClasses from "../pages/Dashboard/Instructor/MyClasses";
 import AddAClass from "../pages/Dashboard/Instructor/AddAClass";
 import PrivateRoute from "./PrivateRoute";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import MyPayments from "../pages/Dashboard/Student/MyPayments";
+import Dashboard from "../layout/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
                 element: <EnrolledClass></EnrolledClass>
             },
             {
+                path: 'paymenthistory',
+                element: <MyPayments></MyPayments>
+            },
+            {
                 path: 'instructorhome',
                 element: <InstructorHome></InstructorHome>
             },
@@ -90,7 +95,7 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <Payment></Payment>,
-                loader: ({params})=>fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/payment/${params.id}`)
+                loader: ({params})=>fetch(`http://localhost:5000/payment/${params.id}`)
             }
         ]
     },

@@ -10,10 +10,9 @@ const ClassesCard = ({ singleClass }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const handleAddToBooked = item => {
-        console.log(item);
         if (user && user.email) {
             const addedclass = { classId: _id, classImage, className, instructorEmail, instructorName, price, seats, students, email: user.email, paymentStatus: 'booked' }
-            fetch('https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/userclasses', {
+            fetch('http://localhost:5000/userclasses', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -25,9 +24,19 @@ const ClassesCard = ({ singleClass }) => {
                 .then(data => {
                     if (data.insertedId) {
                         Swal.fire({
-                            position: 'top-end',
+                            position: 'center',
                             icon: 'success',
                             title: 'Successfully added.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+
+                    }
+                    else {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Already exists.',
                             showConfirmButton: false,
                             timer: 1500
                         })
@@ -53,7 +62,7 @@ const ClassesCard = ({ singleClass }) => {
         <div className="card w-96 bg-base-100 dark:bg-slate-700 shadow-xl">
             <img className="w-96 h-72 rounded-xl" src={classImage} alt="Shoes" />
             <div className="card-body dark:text-white text-[14px]">
-            <h2 className="card-title">{className}</h2>
+                <h2 className="card-title">{className}</h2>
                 <p>Instructor: {instructorName}</p>
                 <p>Contact: {instructorEmail}</p>
 

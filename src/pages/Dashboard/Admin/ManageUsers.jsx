@@ -10,7 +10,7 @@ const ManageUsers = () => {
         return res.data;
     })
     const handleUserRole = (user, role) => {
-        fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/users/admin/roleupdate/${user._id}?role=${role}`, {
+        fetch(`http://localhost:5000/users/admin/roleupdate/${user._id}?role=${role}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

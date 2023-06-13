@@ -15,20 +15,23 @@ const Dashboard = () => {
     const [isInstructor] = useInstructor();
     const isStudent = (isAdmin ==true || isInstructor == true)?false: true;
     return (
-        <div className="bg-white">
+        <div className="bg-white dark:bg-slate-800">
             <ToastContainer />
             <NavigationBar></NavigationBar>
             <div className="flex lg:px-10 py-10">
                 {
                     isStudent && <div className="w-1/5 space-y-2">
                         <Link to='/dashboard/studenthome'>
-                            <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><FaHome></FaHome>Home</button>
+                            <button className="btn bg-[#e2136e] dark:bg-slate-900 dark:hover:bg-gray-500 w-full text-white hover:bg-gray-500 "><FaHome></FaHome>Home</button>
                         </Link>
                         <Link to='/dashboard/selectedclass'>
-                            <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><SiGoogleclassroom></SiGoogleclassroom> My Selected Class</button>
+                            <button className="btn bg-[#e2136e] dark:bg-slate-900 dark:hover:bg-gray-500 w-full text-white hover:bg-gray-500"><SiGoogleclassroom></SiGoogleclassroom> My Selected Class</button>
                         </Link>
                         <Link to='/dashboard/enrolledclass'>
-                            <button className="btn bg-[#e2136e] w-full text-white hover:bg-gray-500"><FaRegCalendarCheck></FaRegCalendarCheck> My Enrolled Class</button>
+                            <button className="btn bg-[#e2136e] dark:bg-slate-900 dark:hover:bg-gray-500 w-full text-white hover:bg-gray-500"><FaRegCalendarCheck></FaRegCalendarCheck> My Enrolled Class</button>
+                        </Link>
+                        <Link to='/dashboard/paymenthistory'>
+                            <button className="btn bg-[#e2136e] dark:bg-slate-900 dark:hover:bg-gray-500 w-full text-white hover:bg-gray-500"><FaRegCalendarCheck></FaRegCalendarCheck>My Payment History</button>
                         </Link>
                     </div>
                 }

@@ -86,7 +86,7 @@ const CheckoutForm = ({ paymentclass, price }) => {
                 .then(res => {
                     console.log(res.data.insertedId)
                     if (res.data.insertedId) {
-                        fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/users/student/paidclass/${paymentclass._id}?paymentStatus=${'paid'}`, {
+                        fetch(`http://localhost:5000/users/student/paidclass/${paymentclass._id}?paymentStatus=${'paid'}`, {
                             method: 'PATCH',
                             headers: {
                                 'content-type': 'application/json',
@@ -97,7 +97,7 @@ const CheckoutForm = ({ paymentclass, price }) => {
                             .then(data => {
                                 console.log(data)
                                 if (data.modifiedCount) {
-                                    fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/users/updateapprovedclass/${paymentclass.classId}`, {
+                                    fetch(`http://localhost:5000/users/updateapprovedclass/${paymentclass.classId}`, {
                                         method: 'PATCH',
                                         headers: {
                                             'content-type': 'application/json',

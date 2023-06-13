@@ -28,7 +28,7 @@ const SelectedClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/bookedclass/${item._id}`, {
+                fetch(`http://localhost:5000/bookedclass/${item._id}`, {
                     method: 'DELETE',
                     headers: {
                         'content-type': 'application/json',

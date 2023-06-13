@@ -16,7 +16,7 @@ const AllClasses = () => {
         },
     })
     const handleStatus = (item, status) => {
-        fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/users/admin/classupdate/${item._id}?status=${status}`, {
+        fetch(`http://localhost:5000/users/admin/classupdate/${item._id}?status=${status}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -39,7 +39,7 @@ const AllClasses = () => {
     }
     const handleFeedback = (feedback) => {
         // console.log(feedback)
-        fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/users/admin/feedbackupdate/${feedbackItemId}?feedback=${feedback}`, {
+        fetch(`http://localhost:5000/users/admin/feedbackupdate/${feedbackItemId}?feedback=${feedback}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
