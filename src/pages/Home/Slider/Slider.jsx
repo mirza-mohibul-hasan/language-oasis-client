@@ -30,44 +30,58 @@ const Slider = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <div className="flex bg-gray-300 dark:bg-slate-700 rounded">
-                        <div className=" flex items-center">
+                    <div className="flex bg-gray-300 dark:bg-slate-700 rounded h-96 flex-col-reverse md:flex-row">
+                        <div className=" flex items-center h-96 md:w-1/2">
                             <div className="text-gray-950 dark:text-white">
-                                <h1 className="mb-5 text-5xl font-bold">Do you want to learn foreign language?</h1>
-                                <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                                <h1 className="md:mb-5 text-xl md:text-5xl font-bold">For more diversity</h1>
+                                <p className="md:mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                                 <button className="btn btn-primary bg-[#e2136e] border-none dark:bg-white dark:text-gray-950">Here we are</button>
                             </div>
                         </div>
-                        <div>
-                            <img className="rounded w-full " src="https://kochiva.com/wp-content/uploads/2022/09/german_course_online.webp" alt="" />
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="flex bg-gray-300 dark:bg-slate-700 rounded h-96">
-                        <div className=" flex items-center">
-                            <div className="text-gray-950 dark:text-white">
-                                <h1 className="mb-5 text-5xl font-bold">For more diversity</h1>
-                                <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                                <button className="btn btn-primary bg-[#e2136e] border-none dark:bg-white dark:text-gray-950">Here we are</button>
-                            </div>
-                        </div>
-                        <div className="h-96">
+                        <div className="h-96 md:w-1/2">
                             <img className="rounded w-full" src="https://edge.mondly.com/blog/wp-content/uploads/2020/03/learn-bengali-1.jpg" alt="" />
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="flex bg-gray-300 dark:bg-slate-700 rounded h-96">
-                        <div className=" flex items-center">
+                    <div className="flex bg-gray-300 dark:bg-slate-700 rounded h-96 flex-col-reverse md:flex-row">
+                        <div className=" flex items-center h-96 md:w-1/2">
                             <div className="text-gray-950 dark:text-white">
-                                <h1 className="mb-5 text-5xl font-bold">Are you looking for Arabic language?</h1>
-                                <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                                <h1 className="mb-5 text-xl md:text-5xl font-bold">Are you looking for Arabic language?</h1>
+                                <p className="md:mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                                <button className="btn btn-primary bg-[#e2136e] border-none dark:bg-white dark:text-gray-950 mb-2">Here we are</button>
+                            </div>
+                        </div>
+                        <div className="h-96 md:w-1/2">
+                            <img className="rounded h-full w-full" src="https://www.quranhost.com/wp-content/uploads/2023/04/learn-arabic.png" alt="" />
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="flex bg-gray-300 dark:bg-slate-700 rounded h-96 flex-col-reverse md:flex-row">
+                        <div className=" flex items-center h-96 md:w-1/2">
+                            <div className="text-gray-950 dark:text-white">
+                                <h1 className="md:mb-5 text-xl md:text-5xl font-bold">For more diversity</h1>
+                                <p className="md:mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                                 <button className="btn btn-primary bg-[#e2136e] border-none dark:bg-white dark:text-gray-950">Here we are</button>
                             </div>
                         </div>
-                        <div>
-                            <img className="rounded" src="https://www.quranhost.com/wp-content/uploads/2023/04/learn-arabic.png" alt="" />
+                        <div className="h-96 md:w-1/2">
+                            <img className="rounded w-full" src="https://edge.mondly.com/blog/wp-content/uploads/2020/03/learn-bengali-1.jpg" alt="" />
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="flex bg-gray-300 dark:bg-slate-700 rounded h-96 flex-col-reverse md:flex-row">
+                        <div className=" flex items-center h-96 md:w-1/2">
+                            <div className="text-gray-950 dark:text-white">
+                                <h1 className="mb-5 text-xl md:text-5xl font-bold">Are you looking for Arabic language?</h1>
+                                <p className="md:mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                                <button className="btn btn-primary bg-[#e2136e] border-none dark:bg-white dark:text-gray-950 mb-2">Here we are</button>
+                            </div>
+                        </div>
+                        <div className="h-96 md:w-1/2">
+                            <img className="rounded h-full w-full" src="https://www.quranhost.com/wp-content/uploads/2023/04/learn-arabic.png" alt="" />
                         </div>
                     </div>
                 </SwiperSlide>

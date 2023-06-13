@@ -2,14 +2,17 @@ import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const PopularClassCard = ({ singleClass }) => {
-    const {_id, classImage, className, instructorEmail, instructorName, price, seats, students } = singleClass;
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    const { _id, classImage, className, instructorEmail, instructorName, price, seats, students } = singleClass;
     const { user } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
-    const handleAddToBooked = item => {
-        console.log(item);
+    const handleAddToBooked = () => {
         if (user && user.email) {
             const addedclass = { classId: _id, classImage, className, instructorEmail, instructorName, price, seats, students, email: user.email, paymentStatus: 'booked' }
             fetch('http://localhost:5000/userclasses', {
@@ -24,9 +27,18 @@ const PopularClassCard = ({ singleClass }) => {
                 .then(data => {
                     if (data.insertedId) {
                         Swal.fire({
-                            position: 'top-end',
+                            position: 'center',
                             icon: 'success',
                             title: 'Successfully added.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                    else {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Already exists.',
                             showConfirmButton: false,
                             timer: 1500
                         })
@@ -61,11 +73,11 @@ const PopularClassCard = ({ singleClass }) => {
 
                 <div className="flex">
                     <p>Available seats: {seats}</p>
-                    <p>Already Enrolled: {students}</p>
+                    <p>Students: {students}</p>
                 </div>
                 <div className="card-actions justify-end items-center">
                     <p className="text-xl font-semibold">${price}</p>
-                    <button onClick={() => handleAddToBooked(singleClass)} className="btn btn-primary bg-[#e2136e] border-none btn-sm dark:text-gray-950 dark:bg-white text-white">Book Now</button>
+                    <button onClick={() => handleAddToBooked()} disabled={isAdmin || isInstructor || seats==0} className="btn btn-primary bg-[#e2136e] border-none btn-sm dark:text-gray-950 dark:bg-white text-white">Book Now</button>
                 </div>
             </div>
         </div>

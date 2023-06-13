@@ -72,13 +72,13 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text"  {...register("name")} name="name" placeholder="Your name" className="input input-bordered" />
+                            <input type="text"  {...register("name")} name="name" placeholder="ex: Mohibul Refat" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" required  {...register("email")} name="email" placeholder="email" className="input input-bordered" />
+                            <input type="email" required  {...register("email")} name="email" placeholder="ex: mirza@mohibul.com" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -87,7 +87,7 @@ const SignUp = () => {
                             <input type="password" required  {...register("password", {
                                 minLength: 6,
                                 pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
-                            })} placeholder="password" className="input input-bordered" />
+                            })} placeholder="Your password" className="input input-bordered" />
                             {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                             {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase and one special character.</p>}
                         </div>

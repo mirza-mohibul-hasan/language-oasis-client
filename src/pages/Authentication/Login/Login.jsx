@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
@@ -54,14 +55,14 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" required  {...register("email")} name="email" placeholder="email" className="input input-bordered" />
+                            <input type="email" required  {...register("email")} name="email" placeholder="ex: mirza@mohibul.com" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type={passwordShown ? "text" : "password"} required  {...register("password")} placeholder="password" className="input input-bordered" />
-                            <p onClick={togglePasswordVisiblity}>{passwordShown ? "Hide" : "Show"} Password</p>
+                            <input type={passwordShown ? "text" : "password"} required  {...register("password")} placeholder="ex: ABC123@@" className="input input-bordered" />
+                            <span className="ml-2 text-xl" onClick={togglePasswordVisiblity}>{passwordShown ? <AiFillEye></AiFillEye>: <AiFillEyeInvisible></AiFillEyeInvisible>}</span>
                         </div>
                         <div className="form-control mt-6">
                             <input className="bg-[#e2136e] text-white font-semibold rounded py-1" type="submit" value="Login" />
