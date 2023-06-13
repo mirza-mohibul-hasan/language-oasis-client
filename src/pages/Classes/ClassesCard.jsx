@@ -5,19 +5,19 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const ClassesCard = ({ singleClass }) => {
-    const {_id, classImage, className, instructorEmail, instructorName, price, seats, students } = singleClass;
-    const {user} = useAuth()
+    const { _id, classImage, className, instructorEmail, instructorName, price, seats, students } = singleClass;
+    const { user } = useAuth()
     const navigate = useNavigate();
     const location = useLocation();
     const handleAddToBooked = item => {
         console.log(item);
         if (user && user.email) {
-            const addedclass = { classId: _id, classImage, className, instructorEmail, instructorName, price, seats, students, email: user.email, paymentStatus:'booked'}
+            const addedclass = { classId: _id, classImage, className, instructorEmail, instructorName, price, seats, students, email: user.email, paymentStatus: 'booked' }
             fetch('https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/userclasses', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
-                    authorization : `Bearer ${localStorage.getItem('access-token')}`
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`
                 },
                 body: JSON.stringify(addedclass)
             })
@@ -50,17 +50,20 @@ const ClassesCard = ({ singleClass }) => {
         }
     }
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
-            <figure><img src={classImage} alt="Shoes" /></figure>
-            <div className="card-body">
-                <h2 className="card-title">{className}</h2>
+        <div className="card w-96 bg-base-100 dark:bg-slate-700 shadow-xl">
+            <img className="w-96 h-72 rounded-xl" src={classImage} alt="Shoes" />
+            <div className="card-body dark:text-white text-[14px]">
+            <h2 className="card-title">{className}</h2>
                 <p>Instructor: {instructorName}</p>
                 <p>Contact: {instructorEmail}</p>
-                <p>${price}</p>
-                <p>Available seats: {seats}</p>
-                <p>Already Enrolled: {students}</p>
-                <div className="card-actions justify-end">
-                    <button onClick={() => handleAddToBooked(singleClass)} className="btn btn-primary">Book Now</button>
+
+                <div className="flex">
+                    <p>Available seats: {seats}</p>
+                    <p>Already Enrolled: {students}</p>
+                </div>
+                <div className="card-actions justify-end items-center">
+                    <p className="text-xl font-semibold">${price}</p>
+                    <button onClick={() => handleAddToBooked(singleClass)} className="btn btn-primary bg-[#e2136e] border-none btn-sm dark:text-gray-950 dark:bg-white text-white dark:hover:bg-blue-500">Book Now</button>
                 </div>
             </div>
         </div>

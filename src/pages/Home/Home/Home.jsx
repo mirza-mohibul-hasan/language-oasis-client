@@ -4,17 +4,12 @@ import FAQSection from "../FAQ/FAQSection";
 import PopularClass from "../PopularClass/PopularClass";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 import Slider from "../Slider/Slider";
-import { Fade, Slide } from "react-awesome-reveal";
 const Home = () => {
     return (
-        <div>
-            <div className="text-center mt-5">
-                <Slide className="text-4xl font-semibold">
-                    <h1>Welcome to Language Oasis</h1>
-                </Slide>
-                <Fade className="text-2xl" delay={1e3} cascade damping={1e-1}>
-                    Easy to learn foreign language
-                </Fade>
+        <div className="dark:bg-slate-800">
+            <div className="py-5 space-y-3">
+                <h1 className="text-5xl md:text-7xl text-center font-semibold dark:text-gray-50">Welcome to <span className="text-[#e2136e]">Language Oasis</span></h1>
+                <p className="text-2xl md:text-3xl text-center font-semibold dark:text-gray-400">Choose from over 210,000 online video courses <br /> with new additions published every month</p>
             </div>
             <Slider></Slider>
             <PopularClass></PopularClass>

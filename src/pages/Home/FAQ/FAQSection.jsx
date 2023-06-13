@@ -1,9 +1,11 @@
 // import React from 'react';
 
+import SectionTitle from "../../../components/SectionTitle";
+
 const FAQSection = () => {
     return (
-        <div className="px-10 space-y-5 mb-10">
-            <h1 className="text-4xl font-bold text-center my-7">Ask Frequently</h1>
+        <div className="px-10 space-y-5 pb-10">
+            <SectionTitle title={'Ask Frequently'} description={'If you have any query, You can find here'}></SectionTitle>
             <div className="collapse collapse-arrow bg-base-200">
                 <input type="radio" name="my-accordion-2" />
                 <div className="collapse-title text-xl font-medium">

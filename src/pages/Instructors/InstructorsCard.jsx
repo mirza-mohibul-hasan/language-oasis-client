@@ -1,15 +1,13 @@
 // import React from 'react';
 
-const InstructorsCard = ({instructor}) => {
-    const {photo, name, email} = instructor;
+const InstructorsCard = ({ instructor }) => {
+    const { photo, name, email } = instructor;
     return (
-        <div className="card w-96 bg-base-100 shadow-xl border border-[#e2136e]">
-            <figure className="px-10 pt-10">
-                <img src={photo} alt="Instructor" className="w-full h-72 rounded-xl" />
-            </figure>
-            <div className="card-body items-center text-center">
-                <h2 className="card-title">{name}</h2>
-                <p>Email: {email}</p>
+        <div className="card w-96 bg-base-100 shadow-md dark:bg-slate-700">
+            <img src={photo} alt="Instructor" className="w-full h-72 p-2 rounded-xl" />
+            <div className="card-body items-center text-center -mt-3 dark:text-white">
+                <h2 className="card-title text-2xl">{name}</h2>
+                <p className="text-md">Contact: {email}</p>
             </div>
         </div>
     );

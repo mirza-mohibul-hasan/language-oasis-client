@@ -8,6 +8,7 @@ import { SiGoogleclassroom } from "react-icons/si";
 import { MdAssignmentAdd } from "react-icons/md";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import { ToastContainer } from "react-toastify";
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
@@ -15,6 +16,7 @@ const Dashboard = () => {
     const isStudent = (isAdmin ==true || isInstructor == true)?false: true;
     return (
         <div className="bg-white">
+            <ToastContainer />
             <NavigationBar></NavigationBar>
             <div className="flex lg:px-10 py-10">
                 {

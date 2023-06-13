@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import PopularClassCard from "./PopularClassCard";
+import SectionTitle from "../../../components/SectionTitle";
 
 const PopularClass = () => {
     const [classes, setClasses] = useState([])
@@ -12,7 +13,7 @@ const PopularClass = () => {
     }, [])
     return (
         <div>
-            <h1 className="text-4xl font-bold text-center my-7">Our Popular Classes</h1>
+            <SectionTitle title={'Our Popular Classes'} description={'Here you can see our popular classes'}></SectionTitle>
             <div className="flex justify-center">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:px-10 gap-5">
                     {
