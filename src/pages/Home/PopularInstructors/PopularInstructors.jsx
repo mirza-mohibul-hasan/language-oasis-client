@@ -7,11 +7,10 @@ import SectionTitle from "../../../components/SectionTitle";
 const PopularInstructors = () => {
     const [instructors, setInstructors] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/popularinstructors')
             .then(res => res.json())
             .then(data => setInstructors(data))
     }, [])
-    instructors.slice(0, 6)
     return (
         <div>
             <SectionTitle title={'Our Popular Instructors'} description={'Here you can see our popular instructors'}></SectionTitle>

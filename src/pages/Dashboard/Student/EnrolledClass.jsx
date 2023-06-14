@@ -4,8 +4,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import useTitle from "../../../hooks/useTitle";
 
 const EnrolledClass = () => {
+    useTitle('Enrolled Classes')
     const { user, loading } = useContext(AuthContext)
     const [axiosSecure] = useAxiosSecure();
     const { data: enrolledclasses = [] } = useQuery({
@@ -22,7 +24,7 @@ const EnrolledClass = () => {
             <div className="overflow-x-auto">
                 <table className="table text-center">
                     {/* head */}
-                    <thead>
+                    <thead className="bg-[#e2136e] text-white dark:bg-slate-900 dark:text-white">
                         <tr>
                             <th>#</th>
                             <th>Cover</th>
@@ -34,7 +36,7 @@ const EnrolledClass = () => {
                             <th>Students</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="dark:text-white">
                         {
                             enrolledclasses.map((singleClass, index) =>
 

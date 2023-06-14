@@ -1,9 +1,9 @@
 [
     {
-        "className": "Arabic Language",
-        "classImage": "https://www.quranhost.com/wp-content/uploads/2023/04/learn-arabic.png",
-        "instructorName": "Abu Talib",
-        "instructorEmail": "abutalib@gmail.com",
+        "classname": "Arabic Language",
+        "classimage": "https://www.quranhost.com/wp-content/uploads/2023/04/learn-arabic.png",
+        "instructorname": "Abu Talib",
+        "instructoremail": "abutalib@gmail.com",
         "seats":43,
         "status":"approved",
         "students":31,

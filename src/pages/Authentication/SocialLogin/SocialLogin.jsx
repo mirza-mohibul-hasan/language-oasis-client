@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 const SocialLogin = () => {
     const { googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ const SocialLogin = () => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
                 const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email, photo: loggedInUser.photoURL }
-                fetch('http://localhost:5000/users', {
+                fetch('https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -25,6 +26,13 @@ const SocialLogin = () => {
                 })
                     .then(res => res.json())
                     .then(() => {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: `Login Successful.`,
+                            showConfirmButton: false,
+                            timer: 800
+                        })
                         navigate(from, { replace: true });
                     })
             })

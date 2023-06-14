@@ -2,8 +2,10 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { RingLoader } from "react-spinners";
+import useTitle from "../../../hooks/useTitle";
 
 const AddAClass = () => {
+    useTitle('Add Class')
     const [axiosSecure] = useAxiosSecure();
     const { user, loading } = useAuth()
     if (loading) {
@@ -24,19 +26,20 @@ const AddAClass = () => {
             .then(data => {
                 if (data.data.insertedId) {
                     Swal.fire({
-                        position: 'top-end',
+                        position: 'center',
                         icon: 'success',
                         title: 'Class added successfully',
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 800
                     })
                 }
             })
     }
+    
     return (
         // Register page
         <div className='flex justify-center items-center  w-full '>
-            <form onSubmit={handleAdd} className='flex flex-col gap-3 w-2/3 border border-red-600 p-5'>
+            <form onSubmit={handleAdd} className='flex flex-col gap-3 w-2/3 border border-red-600 p-5 rounded'>
                 <label htmlFor="" className="text-md font-semibold text-gray-600 px-1 -mb-3">Class Name</label>
                 <input type="text" name="className" required placeholder='Ex: German Language' className='bg-gray-100 px-5 py-2 rounded' />
 
@@ -55,7 +58,7 @@ const AddAClass = () => {
                 <label htmlFor="" className="text-md font-semibold text-gray-600 px-1 -mb-3">Available Seats</label>
                 <input type="number" name="seats" required placeholder='Ex: 11' className='bg-gray-100 px-5 py-2 rounded' />
 
-                <input type="submit" value="Add" className='bg-[#2196f3] text-white font-semibold rounded py-1' />
+                <input type="submit" value="Add" className='bg-[#e2136e] text-white font-semibold rounded py-1' />
             </form>
         </div>
     );

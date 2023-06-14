@@ -5,7 +5,7 @@ import { SiMinutemailer } from "react-icons/si";
 const Footer = () => {
     return (
         <footer className="mx-auto mb-2 p-10 bg-slate-900 text-neutral-content">
-            <section className="grid grid-cols-1 sm:grid-cols-4 mx-auto gap-8 py-8">
+            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto gap-8 py-8">
                 <div>
                     <div className='flex items-center gap-5'>
                         <h1 className='text-3xl font-bold'>Language Oasis</h1>
@@ -41,7 +41,7 @@ const Footer = () => {
 
                 </div>
             </section>
-            <p className='text-center'>ALL RIGHTS RESERVED BY <br /> Mirza Mohibul Hasan</p>
+            <p className='text-center'>ALL RIGHTS RESERVED BY @ Mirza Mohibul Hasan</p>
         </footer>
     );
 };

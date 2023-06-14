@@ -1,10 +1,13 @@
 // import React from 'react';
 
+import useTitle from "../../../hooks/useTitle";
+import WhatWeProvides from "../../WhatWeProvides/WhatWeProvides";
 import FAQSection from "../FAQ/FAQSection";
 import PopularClass from "../PopularClass/PopularClass";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 import Slider from "../Slider/Slider";
 const Home = () => {
+    useTitle('Home')
     return (
         <div className="dark:bg-slate-800">
             <div className="py-5 space-y-3">
@@ -14,6 +17,7 @@ const Home = () => {
             <Slider></Slider>
             <PopularClass></PopularClass>
             <PopularInstructors></PopularInstructors>
+            <WhatWeProvides></WhatWeProvides>
             <FAQSection></FAQSection>
         </div>
     );

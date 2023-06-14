@@ -1,8 +1,10 @@
 // import React from 'react';
 
 import useAuth from "../../../hooks/useAuth";
+import useTitle from "../../../hooks/useTitle";
 
 const InstructorHome = () => {
+    useTitle('Instructor Home')
     const {user}=useAuth();
     return (
         <div>

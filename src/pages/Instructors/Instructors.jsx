@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import InstructorsCard from "./InstructorsCard";
+import useTitle from "../../hooks/useTitle";
 
 const Instructors = () => {
+    useTitle('Instructors')
     const [instructors, setInstructors] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/instructors')
             .then(res => res.json())
             .then(data => setInstructors(data))
     }, [])

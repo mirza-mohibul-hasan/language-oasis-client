@@ -16,7 +16,7 @@ const ClassesCard = ({ singleClass }) => {
     const handleAddToBooked = () => {
         if (user && user.email) {
             const addedclass = { classId: _id, classImage, className, instructorEmail, instructorName, price, seats, students, email: user.email, paymentStatus: 'booked' }
-            fetch('http://localhost:5000/userclasses', {
+            fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/userclasses`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -63,7 +63,7 @@ const ClassesCard = ({ singleClass }) => {
         }
     }
     return (
-        <div className="card w-96 bg-base-100 dark:bg-slate-700 shadow-xl">
+        <div className={`card w-96 bg-base-100 dark:bg-slate-700 shadow-xl ${seats===0 && 'bg-red-600'}`}>
             <img className="w-96 h-72 rounded-xl" src={classImage} alt="Shoes" />
             <div className="card-body dark:text-white text-[14px]">
                 <h2 className="card-title">{className}</h2>

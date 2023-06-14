@@ -2,15 +2,16 @@
 
 import { useEffect, useState } from "react";
 import ClassesCard from "./ClassesCard";
+import useTitle from "../../hooks/useTitle";
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/classes')
             .then(res => res.json())
             .then(data => setClasses(data))
     }, [])
-    // console.log(classes)
+    useTitle('Classes')
     return (
         <div className="dark:bg-slate-800 pb-10">
             <div className="py-5 space-y-3">

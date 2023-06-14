@@ -4,6 +4,8 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import Swal from "sweetalert2";
+import useTitle from "../../../hooks/useTitle";
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
@@ -23,7 +25,13 @@ const Login = () => {
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                user&&Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: `Login Successful.`,
+                    showConfirmButton: false,
+                    timer: 800
+                })
                 navigate(from, { replace: true });
             })
             .catch(error => {
@@ -41,11 +49,12 @@ const Login = () => {
                 }
             })
     };
+    useTitle('login')
     return (
         <div>
-            <div className='flex justify-center items-center md:my-50'>
+            <div className='flex justify-center items-center md:my-50 dark:bg-slate-800'>
                 <div className='p-5 m-5 md:w-3/12 rounded-2xl space-y-2' style={{ border: '2px solid #e2136e' }}>
-                    <h2 className='text-2xl font-bold text-center text-gray-700'>Login here</h2>
+                    <h2 className='text-2xl font-bold text-center text-gray-700 dark:text-white'>Login here</h2>
                     {
                         (errormsg.length > 2) && <p className='text-center border border-[#e2136e] text-[#e2136e] text-sm my-1 font-semibold rounded-md'>{errormsg}</p>
                     }
@@ -62,7 +71,7 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type={passwordShown ? "text" : "password"} required  {...register("password")} placeholder="ex: ABC123@@" className="input input-bordered" />
-                            <span className="ml-2 text-xl" onClick={togglePasswordVisiblity}>{passwordShown ? <AiFillEye></AiFillEye>: <AiFillEyeInvisible></AiFillEyeInvisible>}</span>
+                            <span className="ml-2 text-xl" onClick={togglePasswordVisiblity}>{passwordShown ? <AiFillEye></AiFillEye> : <AiFillEyeInvisible></AiFillEyeInvisible>}</span>
                         </div>
                         <div className="form-control mt-6">
                             <input className="bg-[#e2136e] text-white font-semibold rounded py-1" type="submit" value="Login" />

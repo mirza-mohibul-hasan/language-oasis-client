@@ -5,8 +5,10 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import useTitle from "../../../hooks/useTitle";
 
 const SelectedClass = () => {
+    useTitle('Booked Classes')
     const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const { refetch, data: bookedclasses = [] } = useQuery({
@@ -28,7 +30,7 @@ const SelectedClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/bookedclass/${item._id}`, {
+                fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/bookedclass/${item._id}`, {
                     method: 'DELETE',
                     headers: {
                         'content-type': 'application/json',
@@ -55,7 +57,7 @@ const SelectedClass = () => {
                 <table className="table text-center">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="bg-[#e2136e] dark:bg-slate-900 text-white" >
                             <th>#</th>
                             <th>Title</th>
                             <th>Instructor</th>
@@ -65,7 +67,7 @@ const SelectedClass = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="dark:text-white">
                         {
                             bookedclasses.map((singleClass, index) =>
 
@@ -100,7 +102,7 @@ const SelectedClass = () => {
                                             singleClass.seats
                                         }
                                     </td>
-                                    <td>
+                                    <td className="space-x-2">
                                         <Link to={`/dashboard/payment/${singleClass._id}`}><button className="btn bg-green-500 btn-ghost btn-xs">Pay</button></Link>
                                         <button onClick={() => handleDelete(singleClass)} className="btn bg-red-500 btn-ghost btn-xs">Delete</button>
                                     </td>

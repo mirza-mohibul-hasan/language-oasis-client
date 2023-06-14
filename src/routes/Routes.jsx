@@ -20,6 +20,8 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import MyPayments from "../pages/Dashboard/Student/MyPayments";
 import Dashboard from "../layout/Dashboard";
 import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
+import StudentRoute from "./StudentRoute";
 
 const router = createBrowserRouter([
     {
@@ -69,37 +71,37 @@ const router = createBrowserRouter([
             // Student Routes
             {
                 path: 'studenthome',
-                element: <StudentHome></StudentHome>
+                element: <StudentRoute><StudentHome></StudentHome></StudentRoute>
             },
             {
                 path: 'selectedclass',
-                element: <SelectedClass></SelectedClass>
+                element: <StudentRoute><SelectedClass></SelectedClass></StudentRoute>
             },
             {
                 path: 'enrolledclass',
-                element: <EnrolledClass></EnrolledClass>
+                element: <StudentRoute><EnrolledClass></EnrolledClass></StudentRoute>
             },
             {
                 path: 'paymenthistory',
-                element: <MyPayments></MyPayments>
+                element: <StudentRoute><MyPayments></MyPayments></StudentRoute>
             },
             // Instructor Routes
             {
                 path: 'instructorhome',
-                element: <InstructorHome></InstructorHome>
+                element: <InstructorRoute><InstructorHome></InstructorHome></InstructorRoute>
             },
             {
                 path: 'myclasses',
-                element: <MyClasses></MyClasses>
+                element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
             },
             {
                 path: 'addaclass',
-                element: <AddAClass></AddAClass>
+                element: <InstructorRoute><AddAClass></AddAClass></InstructorRoute>
             },
             {
                 path: 'payment/:id',
                 element: <Payment></Payment>,
-                loader: ({params})=>fetch(`http://localhost:5000/payment/${params.id}`)
+                loader: ({params})=>fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/payment/${params.id}`)
             }
         ]
     },

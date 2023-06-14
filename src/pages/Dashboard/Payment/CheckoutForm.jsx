@@ -4,8 +4,12 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useTitle from "../../../hooks/useTitle";
+import Swal from "sweetalert2";
 
 const CheckoutForm = ({ paymentclass, price }) => {
+    const { classImage, className, instructorEmail, instructorName, seats, students } = paymentclass;
+    useTitle('Payment')
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useContext(AuthContext)
@@ -71,7 +75,7 @@ const CheckoutForm = ({ paymentclass, price }) => {
         // console.log(paymentIntent)
         setProcessing(false)
 
-        if (paymentIntent.status === 'succeeded') {
+        if (paymentIntent?.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
             const payment = {
                 email: user?.email,
@@ -86,7 +90,7 @@ const CheckoutForm = ({ paymentclass, price }) => {
                 .then(res => {
                     console.log(res.data.insertedId)
                     if (res.data.insertedId) {
-                        fetch(`http://localhost:5000/users/student/paidclass/${paymentclass._id}?paymentStatus=${'paid'}`, {
+                        fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/users/student/paidclass/${paymentclass._id}?paymentStatus=${'paid'}`, {
                             method: 'PATCH',
                             headers: {
                                 'content-type': 'application/json',
@@ -97,7 +101,7 @@ const CheckoutForm = ({ paymentclass, price }) => {
                             .then(data => {
                                 console.log(data)
                                 if (data.modifiedCount) {
-                                    fetch(`http://localhost:5000/users/updateapprovedclass/${paymentclass.classId}`, {
+                                    fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/users/updateapprovedclass/${paymentclass.classId}`, {
                                         method: 'PATCH',
                                         headers: {
                                             'content-type': 'application/json',
@@ -108,7 +112,13 @@ const CheckoutForm = ({ paymentclass, price }) => {
                                         .then(data => {
                                             console.log(data)
                                             if (data.modifiedCount) {
-                                                alert("Status Updated")
+                                                Swal.fire({
+                                                    position: 'center',
+                                                    icon: 'success',
+                                                    title: `Login Successful.`,
+                                                    showConfirmButton: false,
+                                                    timer: 800
+                                                })
                                             }
                                         })
                                 }
@@ -116,10 +126,39 @@ const CheckoutForm = ({ paymentclass, price }) => {
                     }
                 })
         }
+        else {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: `${cardError}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
     }
+
     return (
-        <div>
-            <form className="w-1/2 mx-auto" onSubmit={handleSubmit}>
+        <div className="">
+            <div>
+                <div className="card w-2/3 mx-auto bg-base-100 dark:bg-slate-700 shadow-xl flex-row border-2 p-1 border-[#e2136e] rounded">
+                    <img className="w-96 h-52 rounded" src={classImage} alt="Shoes" />
+                    <div className="card-body dark:text-white text-[14px]">
+                        <h2 className="card-title">{className}</h2>
+                        <p>Instructor: {instructorName}</p>
+                        <p>Contact: {instructorEmail}</p>
+
+                        <div className="flex">
+                            <p>Available seats: {seats}</p>
+                            <p>Students: {students}</p>
+                        </div>
+                        <div className="card-actions justify-end items-center">
+                            <p className="text-xl font-semibold">${price}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form className="w-1/2 mt-5 mx-auto border-2 p-5 rounded bg-slate-50 border-[#e2136e]" onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {
@@ -127,7 +166,7 @@ const CheckoutForm = ({ paymentclass, price }) => {
                                 fontSize: '16px',
                                 color: '#424770',
                                 '::placeholder': {
-                                    color: '#aab7c4',
+                                    color: '#020406',
                                 },
                             },
                             invalid: {
@@ -136,13 +175,15 @@ const CheckoutForm = ({ paymentclass, price }) => {
                         },
                     }}
                 />
-                <button className="btn btn-primary btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret || processing}>
-                    Pay Now
-                </button>
+                <div className="flex items-center justify-between">
+                    <button className="btn bg-green-600 text-white hover:text-black btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret || processing}>
+                        Pay Now
+                    </button>
+                    {transactionId && <p className="text-blue-500 text-lg mt-2">Transaction ID: <span className="text-black">{transactionId}</span></p>}
+                </div>
 
             </form>
-            {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
-            {transactionId && <p className="text-green-500">Transaction complete with transactionId: {transactionId}</p>}
+
         </div>
     );
 };

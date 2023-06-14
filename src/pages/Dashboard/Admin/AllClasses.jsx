@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
+import useTitle from "../../../hooks/useTitle";
+import Swal from "sweetalert2";
 const AllClasses = () => {
     const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
@@ -16,7 +18,7 @@ const AllClasses = () => {
         },
     })
     const handleStatus = (item, status) => {
-        fetch(`http://localhost:5000/users/admin/classupdate/${item._id}?status=${status}`, {
+        fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/users/admin/classupdate/${item._id}?status=${status}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -28,7 +30,13 @@ const AllClasses = () => {
                 console.log(data)
                 if (data.modifiedCount) {
                     refetch();
-                    alert("Status Updated")
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `Status Updated.`,
+                        showConfirmButton: false,
+                        timer: 800
+                    })
                 }
             })
     }
@@ -39,7 +47,7 @@ const AllClasses = () => {
     }
     const handleFeedback = (feedback) => {
         // console.log(feedback)
-        fetch(`http://localhost:5000/users/admin/feedbackupdate/${feedbackItemId}?feedback=${feedback}`, {
+        fetch(`https://b7a12-summer-camp-server-side-mirza-mohibul-hasan.vercel.app/users/admin/feedbackupdate/${feedbackItemId}?feedback=${feedback}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -47,13 +55,20 @@ const AllClasses = () => {
                 console.log(data)
                 if (data.modifiedCount) {
                     refetch();
-                    alert("Feedback Added")
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `Feedback Added Successful.`,
+                        showConfirmButton: false,
+                        timer: 800
+                    })
                 }
             })
         setFieldValue('')
     }
+    useTitle('All Classes')
     return (
-        <div className="px-5">
+        <div className="px-5 border-l-2 ml-5">
             <div>
                 <dialog id="my_modal_3" className="modal">
                     <form method="dialog" className="modal-box">
@@ -73,8 +88,8 @@ const AllClasses = () => {
             <div className="overflow-x-auto">
                 <table className="table text-center">
                     {/* head */}
-                    <thead>
-                        <tr>
+                    <thead className="bg-[#e2136e]">
+                        <tr className="text-white">
                             <th>#</th>
                             <th>Banner</th>
                             <th>Title</th>
@@ -86,7 +101,7 @@ const AllClasses = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="">
                         {
                             allclasses.map((singleClass, index) =>
 
@@ -130,8 +145,8 @@ const AllClasses = () => {
                                         }
                                     </td>
                                     <td className="flex gap-1 items-center">
-                                        <button onClick={() => handleStatus(singleClass, 'approved')} disabled={singleClass.status === 'approved'} className="btn bg-green-500 btn-ghost btn-xs">Approve</button>
-                                        <button onClick={() => handleStatus(singleClass, 'denied')} disabled={singleClass.status === 'approved'} className="btn bg-red-500 btn-ghost btn-xs">Deny</button>
+                                        <button onClick={() => handleStatus(singleClass, 'approved')} disabled={singleClass.status === 'approved' || singleClass.status === 'denied'} className="btn bg-green-500 btn-ghost btn-xs text-white">Approve</button>
+                                        <button onClick={() => handleStatus(singleClass, 'denied')} disabled={singleClass.status === 'approved'} className="btn bg-red-500 btn-ghost btn-xs text-white">Deny</button>
                                         <button onClick={() => {window.my_modal_3.showModal(); handleId(singleClass._id)}} className="btn bg-gray-400 btn-ghost btn-xs">Feedback</button>
                                     </td>
                                 </tr>)

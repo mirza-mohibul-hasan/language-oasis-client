@@ -1,8 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useTitle from "../../../hooks/useTitle";
 
 const MyClasses = () => {
+    useTitle('My Classes')
     const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const {  data: myclasses = [] } = useQuery({
@@ -19,7 +21,7 @@ const MyClasses = () => {
                 <table className="table text-center">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="bg-[#dc3545] text-white">
                             <th>#</th>
                             <th>Banner</th>
                             <th>Title</th>
@@ -82,7 +84,7 @@ const MyClasses = () => {
                                     </td>
                                     <td>
                                         {
-                                            (singleClass.status=='denied') && singleClass.feedback
+                                            (singleClass.status=='denied' || singleClass.status=='approved') && singleClass.feedback
                                         }
                                     </td>
                                 </tr>)
