@@ -61,7 +61,7 @@ const PopularClassCard = ({ singleClass }) => {
         }
     }
     return (
-        <div className="card w-96 bg-base-100 dark:bg-slate-700 shadow-xl">
+        <div className="card w-80 md:w-96 mx-auto bg-base-100 dark:bg-slate-700 shadow-xl">
             <img className="w-96 h-72 rounded-xl" src={classImage} alt="Shoes" />
             <div className="card-body dark:text-white text-[14px]">
                 <div className="flex justify-between">
